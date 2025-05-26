@@ -1,3 +1,5 @@
+import { useCallback, useMemo } from 'react';
+
 // CSS code validation utility
 export class CodeValidator {
   constructor() {
@@ -173,15 +175,17 @@ class CSSParser {
 
 // Real-time validation Hook
 export function useCodeValidation(level, code) {
-  const validator = new CodeValidator();
+  // Memoize the validator instance to prevent recreation
+  const validator = useMemo(() => new CodeValidator(), []);
   
-  const validate = () => {
+  // Memoize the validate function to prevent infinite re-renders
+  const validate = useCallback(() => {
     if (!level?.validation || !code) {
       return { isValid: false, errors: [], passedRules: 0, totalRules: 0 };
     }
     
     return validator.validateLevel(code, level.validation);
-  };
+  }, [level?.validation, code, validator]);
 
   return { validate };
 } 

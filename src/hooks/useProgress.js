@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 // Progress status enumeration
 export const LEVEL_STATUS = {
@@ -12,6 +12,47 @@ export const LEVEL_STATUS = {
 export function useProgress() {
   const [progress, setProgress] = useState({});
   const [currentLevel, setCurrentLevel] = useState(null);
+
+  // Save progress to local storage
+  const saveProgress = useCallback((newProgress) => {
+    localStorage.setItem('learning_progress', JSON.stringify(newProgress));
+  }, []);
+
+  // Initialize progress (all levels available)
+  const initializeProgress = useCallback(() => {
+    const initialProgress = {
+      'web-fundamentals-01': {
+        status: LEVEL_STATUS.AVAILABLE,
+        attempts: 0,
+        completedAt: null,
+        timeSpent: 0,
+        hintsUsed: 0
+      },
+      'css-basics-01': {
+        status: LEVEL_STATUS.AVAILABLE,
+        attempts: 0,
+        completedAt: null,
+        timeSpent: 0,
+        hintsUsed: 0
+      },
+      'css-hover-01': {
+        status: LEVEL_STATUS.AVAILABLE,
+        attempts: 0,
+        completedAt: null,
+        timeSpent: 0,
+        hintsUsed: 0
+      },
+      'css-transform-01': {
+        status: LEVEL_STATUS.AVAILABLE,
+        attempts: 0,
+        completedAt: null,
+        timeSpent: 0,
+        hintsUsed: 0
+      }
+    };
+    setProgress(initialProgress);
+    saveProgress(initialProgress);
+  }, [saveProgress]);
 
   // Load progress from local storage
   useEffect(() => {
@@ -27,27 +68,7 @@ export function useProgress() {
     } else {
       initializeProgress();
     }
-  }, []);
-
-  // Initialize progress (first level available, others locked)
-  const initializeProgress = () => {
-    const initialProgress = {
-      'css-basics-01': {
-        status: LEVEL_STATUS.AVAILABLE,
-        attempts: 0,
-        completedAt: null,
-        timeSpent: 0,
-        hintsUsed: 0
-      }
-    };
-    setProgress(initialProgress);
-    saveProgress(initialProgress);
-  };
-
-  // Save progress to local storage
-  const saveProgress = (newProgress) => {
-    localStorage.setItem('learning_progress', JSON.stringify(newProgress));
-  };
+  }, [initializeProgress]);
 
   // Get level status
   const getLevelStatus = (levelId) => {
@@ -149,4 +170,4 @@ export function useProgress() {
     resetProgress,
     getStats
   };
-} 
+}

@@ -491,6 +491,72 @@
   font-size: 20px !important;
 }
 
+/* Fix for selected line visibility */
+.editor-panel .cm-editor .cm-line.cm-activeLine,
+.editor-panel .cm-editor .cm-activeLine,
+.editor-panel .cm-editor .cm-selectionBackground,
+.editor-panel .cm-editor .cm-focused .cm-selectionBackground {
+  background: rgba(99, 102, 241, 0.2) !important;
+}
+
+.editor-panel .cm-editor .cm-line.cm-activeLine *,
+.editor-panel .cm-editor .cm-activeLine *,
+.editor-panel .cm-editor .cm-selectionBackground *,
+.editor-panel .cm-editor .cm-focused .cm-selectionBackground * {
+  color: #ffffff !important;
+  background: transparent !important;
+}
+
+/* Ensure text selection is visible */
+.editor-panel .cm-editor .cm-selectionLayer .cm-selectionBackground {
+  background: rgba(99, 102, 241, 0.3) !important;
+}
+
+/* Fix cursor line highlighting */
+.editor-panel .cm-editor .cm-cursor {
+  border-left: 2px solid #06b6d4 !important;
+}
+
+/* Fix line selection highlighting */
+.editor-panel .cm-editor .cm-lineNumbers .cm-activeLineGutter {
+  background: rgba(99, 102, 241, 0.2) !important;
+  color: #ffffff !important;
+}
+
+/* Additional selection fixes for CodeMirror */
+.editor-panel .cm-editor .cm-content .cm-line.cm-activeLine {
+  background: rgba(99, 102, 241, 0.15) !important;
+}
+
+.editor-panel .cm-editor .cm-content .cm-line.cm-activeLine span {
+  color: #ffffff !important;
+}
+
+/* Fix for text selection within lines */
+.editor-panel .cm-editor .cm-content .cm-line ::selection {
+  background: rgba(6, 182, 212, 0.4) !important;
+  color: #ffffff !important;
+}
+
+.editor-panel .cm-editor .cm-content .cm-line ::-moz-selection {
+  background: rgba(6, 182, 212, 0.4) !important;
+  color: #ffffff !important;
+}
+
+/* Ensure all text tokens remain visible on active line */
+.editor-panel .cm-editor .cm-activeLine .tok-string,
+.editor-panel .cm-editor .cm-activeLine .tok-propertyName,
+.editor-panel .cm-editor .cm-activeLine .tok-keyword,
+.editor-panel .cm-editor .cm-activeLine [class*="tok-"] {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+/* Override any conflicting selection styles */
+.editor-panel .cm-editor .cm-selectionMatch {
+  background: rgba(6, 182, 212, 0.3) !important;
+}
+
 .editor-panel .tok-string,
 .editor-panel .tok-string *,
 .editor-panel [class*="tok-string"] {
@@ -595,4 +661,126 @@
 
 .hints-panel {
   animation: slideInUp 0.3s ease-out;
+}
+
+/* Completely hide index.html tab to prevent confusion */
+.editor-panel .sp-tab-button[title*="index.html"] {
+  display: none !important;
+}
+
+/* Make styles.css tab take full width */
+.editor-panel .sp-tab-button[title*="styles.css"] {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(139, 92, 246, 0.3)) !important;
+  color: #e2e8f0 !important;
+  border-color: rgba(99, 102, 241, 0.5) !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  padding: 12px 20px !important;
+  position: relative !important;
+  z-index: 5 !important;
+  width: 100% !important;
+  max-width: 200px !important;
+  text-align: center !important;
+}
+
+.editor-panel .sp-tab-button[title*="styles.css"]::before {
+  content: "🎨 " !important;
+  margin-right: 4px !important;
+}
+
+.editor-panel .sp-tab-button[title*="styles.css"][data-active="true"] {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+  color: white !important;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4) !important;
+  border: 2px solid rgba(99, 102, 241, 0.6) !important;
+  transform: scale(1.02) !important;
+  z-index: 15 !important;
+}
+
+/* Force CSS file to be the primary focus */
+.editor-panel .sp-tabs {
+  background: rgba(15, 23, 42, 0.95) !important;
+  border-bottom: 2px solid rgba(99, 102, 241, 0.3) !important;
+  padding: 8px 16px !important;
+  display: flex !important;
+  justify-content: flex-start !important;
+}
+
+.editor-panel .sp-tab-button {
+  transition: all 0.3s ease !important;
+  margin-right: 8px !important;
+  border-radius: 12px 12px 0 0 !important;
+  position: relative !important;
+}
+
+/* Enhanced styling for the single visible CSS tab */
+.editor-panel .sp-tabs::before {
+  content: "CSS Editor" !important;
+  position: absolute !important;
+  right: 16px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  color: rgba(148, 163, 184, 0.7) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+}
+
+/* Ensure only styles.css is visible and prominent */
+.editor-panel .sp-wrapper {
+  background: rgba(15, 23, 42, 0.9) !important;
+}
+
+.editor-panel .sp-layout {
+  background: transparent !important;
+}
+
+/* 概念教学课程的特殊样式 */
+.level-header.conceptual-header {
+  background: rgba(15, 23, 42, 0.8);
+  color: #e2e8f0;
+  padding: 2rem;
+  border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+  backdrop-filter: blur(20px);
+}
+
+.level-header.conceptual-header .back-button {
+  background: rgba(30, 41, 59, 0.8);
+  color: #cbd5e1;
+  border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.level-header.conceptual-header .back-button:hover {
+  background: rgba(99, 102, 241, 0.3);
+  color: #e2e8f0;
+  transform: translateY(-2px);
+}
+
+.level-header.conceptual-header .level-info h1 {
+  color: #e2e8f0;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.level-header.conceptual-header .level-description {
+  font-size: 1.2rem;
+  color: #94a3b8;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* 概念教学课程的响应式设计 */
+@media (max-width: 768px) {
+  .level-header.conceptual-header {
+    padding: 1.5rem;
+    text-align: center;
+  }
+  
+  .level-header.conceptual-header .level-info h1 {
+    font-size: 2rem;
+  }
+  
+  .level-header.conceptual-header .level-description {
+    font-size: 1rem;
+  }
 } 

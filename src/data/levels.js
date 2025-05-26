@@ -1,6 +1,58 @@
 // Level data structure definition
 export const levels = [
   {
+    id: 'web-fundamentals-01',
+    title: 'Web Fundamentals: HTML, CSS & JavaScript',
+    description: 'Comprehensive introduction to the three core technologies that power the modern web. Learn how HTML, CSS, and JavaScript work together to create amazing web experiences.',
+    difficulty: 'beginner',
+    estimatedTime: '15-20 minutes',
+    type: 'conceptual',
+    lesson: {
+      content: `
+# Web Development Fundamentals
+
+Welcome to the comprehensive world of web development! This course provides an in-depth introduction to the three core technologies that power every website and web application on the internet.
+
+## What You'll Discover
+
+Through this extensive course, you will:
+- Understand the fundamental roles of HTML, CSS, and JavaScript
+- Learn how these technologies evolved and shaped the modern web
+- Explore real-world examples and practical applications
+- Master the optimal learning path for web development success
+- Gain insights from industry best practices and expert tips
+
+## Course Highlights
+
+- 🎯 **Deep Conceptual Understanding**: Go beyond surface-level explanations to truly understand how web technologies work
+- 🏠 **Practical Analogies**: Use relatable metaphors to make complex concepts easy to grasp
+- 📊 **Real-World Statistics**: Learn about the current state and scale of web development
+- 🚀 **Strategic Learning Path**: Follow a proven roadmap used by successful developers worldwide
+- 💡 **Expert Tips**: Benefit from professional insights and best practices
+
+## Interactive Learning Experience
+
+This course features:
+- **6 Comprehensive Modules** covering each technology in detail
+- **Auto-play Functionality** for guided learning experience
+- **Interactive Navigation** to explore at your own pace
+- **Key Takeaways** summarized for easy reference
+- **Progressive Difficulty** building from basics to advanced concepts
+
+Ready to embark on your web development journey? Let's dive deep into the technologies that power the digital world!
+      `,
+      hints: [
+        'HTML provides the structural foundation - master semantic markup for accessibility and SEO',
+        'CSS controls all visual aspects - learn responsive design principles for modern web development',
+        'JavaScript adds dynamic behavior - understand event-driven programming and DOM manipulation',
+        'The three technologies form a cohesive ecosystem - each builds upon the others',
+        'Sequential learning (HTML → CSS → JavaScript) provides the strongest foundation',
+        'Practice with real projects to reinforce theoretical knowledge',
+        'Join developer communities for support and continuous learning'
+      ]
+    }
+  },
+  {
     id: 'css-basics-01',
     title: 'CSS Basics: Colors & Backgrounds',
     description: 'Learn how to use CSS to set element colors and backgrounds',
@@ -46,18 +98,23 @@ Please modify the box below to:
       ]
     },
     files: {
-      '/App.js': {
-        code: `import "./styles.css";
-
-export default function App() {
-  return (
-    <div className="container">
-      <div className="box">
-        Hello CSS!
-      </div>
+      '/index.html': {
+        code: `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Colors & Backgrounds</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            Hello CSS!
+        </div>
     </div>
-  );
-}`,
+</body>
+</html>`,
         readOnly: true
       },
       '/styles.css': {
@@ -133,18 +190,23 @@ Add hover effects to the button:
       ]
     },
     files: {
-      '/App.js': {
-        code: `import "./styles.css";
-
-export default function App() {
-  return (
-    <div className="container">
-      <button className="button">
-        Hover me!
-      </button>
+      '/index.html': {
+        code: `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Hover Effects</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <button class="button">
+            Hover me!
+        </button>
     </div>
-  );
-}`,
+</body>
+</html>`,
         readOnly: true
       },
       '/styles.css': {
@@ -224,19 +286,24 @@ Add hover transform effects to the card:
       ]
     },
     files: {
-      '/App.js': {
-        code: `import "./styles.css";
-
-export default function App() {
-  return (
-    <div className="container">
-      <div className="card">
-        <h3>Transform Card</h3>
-        <p>Hover to see what happens!</p>
-      </div>
+      '/index.html': {
+        code: `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Transform Effects</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h3>Transform Card</h3>
+            <p>Hover to see what happens!</p>
+        </div>
     </div>
-  );
-}`,
+</body>
+</html>`,
         readOnly: true
       },
       '/styles.css': {
